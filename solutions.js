@@ -16,7 +16,7 @@ const concatenateArrays = (...arrays) => arrays.flat();
 const getPopularCourses = (courses, minStudents) => courses.filter(course => course.isPublished && course.students > minStudents);
 // proble-6
 const pluckValues = (items, key) => items.map(item => item[key]);
-// ! problem-7
+// problem-7
 class Employee {
     name;
     baseSalary;

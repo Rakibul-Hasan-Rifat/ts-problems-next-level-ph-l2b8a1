@@ -27,7 +27,7 @@ const getPopularCourses = (courses: Course[], minStudents: number): Course[] => 
 // proble-6
 const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => items.map(item => item[key])
 
-// ! problem-7
+// problem-7
 class Employee {
     constructor(protected name: string, private baseSalary: number) { }
 
