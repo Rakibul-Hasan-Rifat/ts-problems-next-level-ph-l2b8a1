@@ -2,10 +2,6 @@
 const multiplyValue = (value: number, multiplier: number = 2): number =>
     value * multiplier;
 
-console.log(multiplyValue(10));
-console.log(multiplyValue(10, 5));
-console.log(multiplyValue(7, 0));
-
 // problem-2
 const processInput = (value: string | number | boolean): string | number => {
     if (typeof value === "number") return value * 10;
@@ -13,23 +9,11 @@ const processInput = (value: string | number | boolean): string | number => {
     else return value.trim().toLowerCase();
 };
 
-console.log(processInput("  TypeScript  "));
-console.log(processInput(7));
-console.log(processInput(true));
-console.log(processInput(false));
-
 // problem-3
 const formatCoordinate = (values: readonly [number, number, string]): string => `Location: ${values[2]} (${values[0]}, ${values[1]})`;
 
-console.log(formatCoordinate([23.81, 90.41, "Dhaka"]));
-console.log(formatCoordinate([22.35, 91.78, "Chittagong"]));
-
 // problem-4
 const concatenateArrays = <T>(...arrays: T[][]): T[] => arrays.flat();
-
-console.log(concatenateArrays(["a", "b"], ["c", "d"]))
-console.log(concatenateArrays([1, 2], [3, 4], [5]))
-
 
 // problem-5
 interface Course {
@@ -40,40 +24,31 @@ interface Course {
 
 const getPopularCourses = (courses: Course[], minStudents: number): Course[] => courses.filter(course => course.isPublished && course.students > minStudents);
 
-// Sample Input:
-const courses = [
-  { title: "TypeScript Mastery", students: 120, isPublished: true },
-  { title: "Draft Course", students: 200, isPublished: false },
-  { title: "Basic HTML", students: 45, isPublished: true },
-  { title: "Next.js Pro", students: 85, isPublished: true }
-];
-
-console.log(getPopularCourses(courses, 80))
-
-
 // proble-6
-const pluckValues = <T,K extends keyof T>(items: T[], key: K): T[K][] => items.map(item => item[key])
-// Sample Input:
-const users = [
-  { id: 1, name: "Rakib", role: "Admin" },
-  { id: 2, name: "Sadia", role: "Editor" },
-  { id: 3, name: "Tariq", role: "Subscriber" }
-];
-
-console.log(pluckValues(users, "name"))
-console.log(pluckValues(users, "role"))
-console.log(pluckValues(users, "id"))
+const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => items.map(item => item[key])
 
 // ! problem-7
+class Employee {
+    constructor(protected name: string, private baseSalary: number) { }
 
-class Employee { }
+    getDetails() {
+        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`
+    }
+}
 
-class Manager extends Employee { }
+class Manager extends Employee {
+    constructor(name: string, baseSalary: number, private department: string) {
+        super(name, baseSalary)
+    }
+
+    getRoleInfo() {
+        return `Manager of ${this.department}: ${this.name}`
+    }
+}
 
 // problem-8
-
-const validateAgeAsync = async (age: number): Promise<string> => {
-    return " ";
-};
-
-console.log("File is running successfully");
+const validateAgeAsync = async (age: number): Promise<string> => await new Promise((resolve, reject) => {
+    if (age > 18) setTimeout(() => resolve("Access Granted"), 1000)
+    else reject("Access Denied: Must be 18 or older")
+})
+// 
